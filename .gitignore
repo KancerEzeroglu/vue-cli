@@ -9,3 +9,14 @@ temp
 .version
 .versions
 .changelog
+
+######################
+# Intellij
+######################
+.idea/
+*.iml
+*.iws
+*.ipr
+*.ids
+*.orig
+classes/

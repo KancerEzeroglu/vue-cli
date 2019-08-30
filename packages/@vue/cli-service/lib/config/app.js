@@ -149,21 +149,19 @@ module.exports = (api, options) => {
     const PreloadPlugin = require('@vue/preload-webpack-plugin')
     const multiPageConfig = options.pages
     const htmlPath = api.resolve('public/index.html')
-    const defaultHtmlPath = path.resolve(__dirname, 'index-default.html')
+    const defaultHtmlPath = path.resolve(__dirname, 'sample.pug')
     const publicCopyIgnore = ['.DS_Store']
 
     if (!multiPageConfig) {
       // default, single page setup.
-      htmlOptions.template = fs.existsSync(htmlPath)
-        ? htmlPath
-        : defaultHtmlPath
+      htmlOptions.template = defaultHtmlPath
 
       webpackConfig
         .plugin('html')
           .use(HTMLPlugin, [htmlOptions])
-
       if (!isLegacyBundle) {
         // inject preload/prefetch to HTML
+
         webpackConfig
           .plugin('preload')
             .use(PreloadPlugin, [{
